@@ -1,0 +1,29 @@
+body {
+  background: #b0bce8;
+  background: -moz-radial-gradient(center, circle cover, #f7fbfc 0%, #b0bce8 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #f7fbfc), color-stop(100%, #b0bce8));
+  background: -webkit-radial-gradient(center, circle cover, #f7fbfc 0%, #b0bce8 100%);
+  background: -o-radial-gradient(center, circle cover, #f7fbfc 0%, #b0bce8 100%);
+  background: -ms-radial-gradient(center, circle cover, #f7fbfc 0%, #b0bce8 100%);
+  background: radial-gradient(center, circle cover, #f7fbfc 0%, #b0bce8 100%);
+  background-color: #f7fbfc;
+}
+
+body:after {
+    background-image: url("AMCG-logo.png");
+    background-size: 193px 53px;
+    content:"";
+    position: fixed;
+    bottom: 1.5em;
+    left: 1.5em;
+    box-shadow: 5px 5px 10px #000; 
+    display: inline-block;
+    width: 193px; 
+    height: 53px;
+}
+
+.reveal img,
+.reveal.reveal video,
+.reveal iframe {
+    max-height: calc(80vh);
+}
