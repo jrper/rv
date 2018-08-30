@@ -1,6 +1,7 @@
-# Moving meshes in Fluidity
-## AMCG, ESE, ICL
-Moving Meshes Workshop, Reading 3rd Sept 2018
+## Coupled hr adaptive and moving mesh methods in environmental fluid dynamics
+### James Percival
+### AMCG, Imperial College London 
+MovingMesh2018, University of Reading, 3rd Sept 2018
 
 
 
@@ -13,41 +14,111 @@ Moving Meshes Workshop, Reading 3rd Sept 2018
 
 ## Existing mesh adaptivity
 
- - Update out-of-timestep to
- - Optimize for Hessian-based error estimate of "good" mesh
- - New mesh is a better representation for static problems/"now".
+ - Update occurs out-of-timestep
+ - Optimize for a "good" mesh
+    - Hessian-based error estimate or
+	- Goal based
+ - New mesh is a "better" representation for static problems/"now".
  - Mesh-to-mesh interpolation [not cheap]
 
 
 
-## Motivation 1: Deforming Domains
+## Mesh Operations : Edge Flips/Edge-Face Flips
+
+ ![edge flips](./moving_mesh_etc/edge_flip.png)
 
 
-### 3D Bed Scour/Sediment Transport
+## Mesh Operations : Edge Flips/Edge-Face Flips
 
-
-### Ice Melt
-
-
-### Fluid Solid Interaction
+ - Modify connectivity to improve mesh
+ - Meet criterion such as Delaunay.
+ - Particularly cheap in 2D
 
 
 
-## Motivation 2: Accurate Advection
+## Mesh Operations : Edge Splitting
 
-<video style="max-height: 300px;" controls>
+ ![edge split](./moving_mesh_etc/edge_split.png)
+
+
+## Mesh Operations : Edge Splitting
+
+ - Increase degrees of freedom
+ - Can do mesh interpolation cheaply.
+
+
+
+## Mesh Operations : Node Collapsing
+
+ ![node collapse](./moving_mesh_etc/node_collapse.png)
+
+
+## Mesh Operations : Node Collapsing
+
+ - Reduce degrees of freedom
+ - Diffusive.
+
+
+
+## Mesh Operations : Node Movement
+
+![node movement](./moving_mesh_etc/node_movement.png)
+
+
+## Mesh Operations : Node Movement
+
+ - *r*-adaptivity embeded in mesh optimization
+ - mesh interpolation expensive
+
+
+
+## Motivation 1: Advection
+
+<video controls>
 <source src="./moving_mesh_etc/comparison.mp4" type="video/mp4">
 </video>
 
 
+## Advection
 
-## ALE formulation
+ - True Lagrangian motion represents least diffusive method
+ - Useful, but not require
+
+
+
+## Motivation 2: Deformation
+
+<video controls>
+<source src="./moving_mesh_etc/oscillating_cylinder_viscosity.mp4" type="video/mp4">
+</video>
+
+
+## Deformation
+
+ - Underlying geometry is changing due to other processes
+ - Mesh movement absolutely necessary
+
+
+### Bed Scour/Sediment Transport
+
+Note: ### Ice Melt
+
+
+## Gravity Waves
+
+<video controls>
+<source src="./moving_mesh_etc/plucked_string.mp4" type="video/mp4">
+</video>
+
+
+
+## Moving Mesh Formulation
 
 Transform to fixed mesh coordinate, $\boldsymbol{\chi}$, plus moving physical coordinate, $\mathbf{x}$.
 
 $$\dot{\mathbf{x}}(\boldsymbol{\chi})=\mathbf{v}(\boldsymbol{\chi})$$
 
-Consistency demands $\mathbf{v}$ is piecewise linear to preserve simplices.
+Consistency demands $\mathbf{v}$ is continuous and piecewise linear to preserve simplices.
 
 
 ## Variable updates
@@ -59,7 +130,7 @@ $$\left.\frac{\partial a}{\partial t}\right|\_{\boldsymbol{\chi}}
 i.e. incompressible N-S eqns look like
 
 $$\left.\frac{\partial \mathbf{u}}{\partial t}\right|\_{\boldsymbol{\chi}}
-+(\mathbf{u}-\mathbf{v})\cdot\nabla\_{\mathbf{x}} \mathbf{u}=-\frac{\nabla\_\mathbf{x} p}{\rho} +\nabla\_\mathbf{x}\cdot\mathbf{\underline{\tau}},$$
++(\mathbf{u}-\mathbf{v})\cdot\nabla\_{\mathbf{x}} \mathbf{u}+2\boldsymbol{\Omega}\times\mathbf{u}=-\frac{\nabla\_\mathbf{x} p}{\rho} +\nabla\_\mathbf{x}\cdot\mathbf{\underline{\tau}},$$
 $$ \nabla\_\mathbf{x}\cdot\mathbf{u} =0. $$
 
 
@@ -112,20 +183,38 @@ Springs on edges + coil springs on vertices.
 
 
 
-### Comparison - runtime
+### Method Comparison - runtime
+
+![runtime](./moving_mesh_etc/runtime.png)
 
 
-### Comparison - robustness
+### Method Comparison - scaling
+
+![scaling](./moving_mesh_etc/Archer_Scaling_15Feb.png)
+
+
+### Method Comparison - robustness
+
+ - Laplacian works well for one dimension/small displacement motions, not otherwise.
+ - Viscous method resists tangling well, but good mesh not guaranteed. 
+ - Lineal-torsional will tend to keep a valid mesh, provided one is possible.
 
 
 
-### Results - Scour
+## Coupling moving mesh + hr adaptivity
+
+ - Coupling mesh optimization (especially connectivity) with in-timestep $r$-adaptivity gives best of both worlds.
 
 
-## Thankyou for your attention
+Note: ### Results - Scour
+Note: ## Thankyou for your attention
 
 
 
 ## References
+
+ - Piggott
+ - Farhat
+ - Alauzet
 
 
