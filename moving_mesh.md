@@ -74,7 +74,7 @@ MovingMesh2018, University of Reading, 3rd Sept 2018
 
 ## Motivation 1: Advection
 
-<video controls>
+<video controls preload>
 <source src=moving_mesh_etc/comparison.mp4 type="video/mp4">
 </video>
 
