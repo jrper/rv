@@ -75,7 +75,7 @@ MovingMesh2018, University of Reading, 3rd Sept 2018
 ## Motivation 1: Advection
 
 <video controls preload>
-<source src=moving_mesh_etc/comparison.mp4 type="video/mp4">
+<source data-src=moving_mesh_etc/comparison.mp4 type="video/mp4">
 </video>
 
 
@@ -88,7 +88,7 @@ MovingMesh2018, University of Reading, 3rd Sept 2018
 ## Gravity Waves
 
 <video controls>
-<source src="./moving_mesh_etc/plucked_string.mp4" type="video/mp4">
+<source data-src="./moving_mesh_etc/plucked_string.mp4" type="video/mp4">
 </video>
 
 
@@ -97,7 +97,7 @@ MovingMesh2018, University of Reading, 3rd Sept 2018
 ## Motivation 2: Deformation
 
 <video controls>
-<source src="./moving_mesh_etc/oscillating_cylinder_viscosity.mp4" type="video/mp4">
+<source data-src="./moving_mesh_etc/oscillating_cylinder_viscosity.mp4" type="video/mp4">
 </video>
 
 
