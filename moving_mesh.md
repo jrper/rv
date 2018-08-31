@@ -75,14 +75,22 @@ MovingMesh2018, University of Reading, 3rd Sept 2018
 ## Motivation 1: Advection
 
 <video controls>
-<source src="./moving_mesh_etc/comparison.mp4" type="video/mp4">
+<source src=moving_mesh_etc/comparison.mp4 type="video/mp4">
 </video>
 
 
 ## Advection
 
- - True Lagrangian motion represents least diffusive method
- - Useful, but not require
+ - True Lagrangian motion non-diffusive.
+ - Useful, but not required.
+
+
+## Gravity Waves
+
+<video controls>
+<source src="./moving_mesh_etc/plucked_string.mp4" type="video/mp4">
+</video>
+
 
 
 
@@ -102,13 +110,6 @@ MovingMesh2018, University of Reading, 3rd Sept 2018
 ### Bed Scour/Sediment Transport
 
 Note: ### Ice Melt
-
-
-## Gravity Waves
-
-<video controls>
-<source src="./moving_mesh_etc/plucked_string.mp4" type="video/mp4">
-</video>
 
 
 
@@ -160,10 +161,12 @@ $$ \nabla\_\mathbf{x}\cdot \gamma \nabla\_\mathbf{x} \mathbf{v} = \mathbf{0},\qu
 
 ### Method 2: Lineal Spring Analogy
 
-After Farhat(19??). Replace mesh edges with linear springs. Solve equilibrium force balance equation for external loads/forcings.
+After Farhat et al(1998). Replace mesh edges with linear springs. Solve equilibrium force balance equation for external loads/forcings.
 
 
 ### Method 3: Linear Elastic Analogy
+
+After Alauzet(2013). Solve explicit PDE on FE mesh.
 
 $$ \sigma(\mathbf{x})=\mathbf{0}. $$
 $$ \sigma(\mathbf{x}):=\lambda\nabla\_{\mathbf{x}\_0}\nabla\_{\mathbf{x}\_0}\cdot \mathbf{x}
@@ -205,16 +208,15 @@ Springs on edges + coil springs on vertices.
 
  - Coupling mesh optimization (especially connectivity) with in-timestep $r$-adaptivity gives best of both worlds.
 
-
-Note: ### Results - Scour
-Note: ## Thankyou for your attention
+<!---
+Note: Results - Scour
+Note: Thankyou for your attention
+--->
 
 
 
 ## References
 
- - Piggott
- - Farhat
- - Alauzet
-
-
+ - [Piggott et. al (2009)](https://doi.org/10.1098/rsta.2009.0155). Anisotropic mesh adaptivity for multi-scale ocean modelling. *Philosophical Transactions of the Royal Society A*
+ - [Farhat et. al (1998)](https://doi.org/10.1016/S0045-7825(98)00016-4) Torsional springs for two-dimensional dynamic unstructured fluid meshes. *Computer Methods in Applied Mechanics and Engineering*
+ - [Alauzet (2013)](https://doi.org/10.1007/s00366-013-0340-z) A changing-topology moving mesh technique for large displacements. *Engineering with Computers*
