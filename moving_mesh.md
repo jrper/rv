@@ -161,12 +161,22 @@ $$ \nabla\_\mathbf{x}\cdot \gamma \nabla\_\mathbf{x} \mathbf{v} = \mathbf{0},\qu
 
 ### Method 2: Lineal Spring Analogy
 
-After Farhat et al(1998). Replace mesh edges with linear springs. Solve equilibrium force balance equation for external loads/forcings.
+![node movement](./moving_mesh_etc/lineal_spring.png)
+
+
+### Method 2: Lineal Spring Analogy
+
+After Farhat et al(1998).
+
+ - Replace mesh edges with linear springs.
+ - Solve equilibrium force balance equation for external loads/forcings.
+ - Allows factors for ideal mesh length & Lagrangian velocity
 
 
 ### Method 3: Linear Elastic Analogy
 
-After Alauzet(2013). Solve explicit PDE on FE mesh.
+After Alauzet(2013).
+ - Solve explicit PDE on FE mesh.
 
 $$ \sigma(\mathbf{x})=\mathbf{0}. $$
 $$ \sigma(\mathbf{x}):=\lambda\nabla\_{\mathbf{x}\_0}\nabla\_{\mathbf{x}\_0}\cdot \mathbf{x}
