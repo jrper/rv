@@ -6,13 +6,13 @@ MovingMesh2018, University of Reading, 3rd Sept 2018
 
 
 
-These slides are available at jrper.github.io/rv/moving_mesh.html
+These slides are available at [jrper.github.io/rv/moving_mesh.html](https://jrper.github.io/rv/mam2018.html)
 
 
 ### Also involved via Imperial
 
  - Prof. Mathew Piggott
- - Dr. Nicolas Barel 
+ - Dr. Nicolas Barral 
  - Dr. Timothy McManus
  - Juan Nunez Rattia
  - Ben Yeager
@@ -24,7 +24,8 @@ These slides are available at jrper.github.io/rv/moving_mesh.html
 
  - Nonhydrostatic Finite Element/Control Volume Navier Stokes solver on unstructured meshes.
  - Extensive (local) mesh adaptivity/optimization.
- - [fluidityproject.github.io](http://fluidityproject.github.io)
+ - Lots of "physics" in multiple areas.
+ - Website at [fluidityproject.github.io](http://fluidityproject.github.io)
 
 
 ## Existing mesh adaptivity
@@ -33,8 +34,17 @@ These slides are available at jrper.github.io/rv/moving_mesh.html
  - Optimize for a "good" mesh
     - Hessian-based error estimate or
 	- Goal based
- - New mesh is a "better" representation for static problems/"now".
+ - New mesh is a "better" representation;
+     - (for static problems/"now")
+	 - Can pre-advect the metric.
  - Mesh-to-mesh interpolation [not cheap]
+
+
+## Existing mesh adaptivity
+
+<video controls preload>
+<source data-src="./moving_mesh_etc/water_collapse.mp4" type="video/mp4">
+</video>
 
 
 
@@ -87,6 +97,15 @@ These slides are available at jrper.github.io/rv/moving_mesh.html
 
 
 
+## So why mesh movement?
+
+Given $hr$-adaptivity, why investigate mesh movement?
+ - Accuracy?
+ - Speed?
+ - New capabilities?
+
+
+
 ## Motivation 1: Advection
 
 <video controls preload>
@@ -102,7 +121,7 @@ These slides are available at jrper.github.io/rv/moving_mesh.html
 
 ## Gravity Waves
 
-<video controls>
+<video controls preload>
 <source data-src="./moving_mesh_etc/plucked_string.mp4" type="video/mp4">
 </video>
 
@@ -111,7 +130,7 @@ These slides are available at jrper.github.io/rv/moving_mesh.html
 
 ## Motivation 2: Deformation
 
-<video controls>
+<video controls preload>
 <source data-src="./moving_mesh_etc/oscillating_cylinder_viscosity.mp4" type="video/mp4">
 </video>
 
@@ -224,7 +243,9 @@ $$ \sigma(\mathbf{v}):=\lambda\nabla\_\mathbf{x}\nabla\_\mathbf{x}\cdot \mathbf{
 +\mu\nabla\_\mathbf{x}\cdot\left(\nabla\_\mathbf{x}\mathbf{v}+\left(\nabla\_\mathbf{x}\mathbf{v}\right)^T\right) +\alpha(\mathbf{u}-\mathbf{v}) $$
 
 
-## Method 5: Lineal- torsional spring analogy
+### Method 5: Lineal-torsional springs
+
+![node movement](./moving_mesh_etc/lineal_spring.png)
 
 Springs on edges + coil springs on vertices.
 
@@ -255,14 +276,14 @@ Springs on edges + coil springs on vertices.
 
 ## Vertical Axis Turbine
 
-<video controls>
+<video controls preload>
 <source data-src="./moving_mesh_etc/turbine_closeup_vorticity.mp4" type="video/mp4">
 </video>
 
 
 ## CFD - Centrifugal pump
 
-<video controls>
+<video controls preload>
 <source data-src="./moving_mesh_etc/pump_full_working.mp4" type="video/mp4">
 </video>
 
@@ -276,5 +297,5 @@ Note: Thankyou for your attention
 ## References
 
  - [Piggott et. al (2009)](https://doi.org/10.1098/rsta.2009.0155). Anisotropic mesh adaptivity for multi-scale ocean modelling. *Philosophical Transactions of the Royal Society A*
- - [Farhat et. al (1998)](https://doi.org/10.1016/S0045-7825(98)00016-4) Torsional springs for two-dimensional dynamic unstructured fluid meshes. *Computer Methods in Applied Mechanics and Engineering*
+ - [Farhat et. al (1998)](https://doi.org/10.1016/S0045-7825%2898%2900016-4) Torsional springs for two-dimensional dynamic unstructured fluid meshes. *Computer Methods in Applied Mechanics and Engineering*
  - [Alauzet (2013)](https://doi.org/10.1007/s00366-013-0340-z) A changing-topology moving mesh technique for large displacements. *Engineering with Computers*
