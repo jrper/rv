@@ -46,12 +46,23 @@
 				center: true,
 
 				// Optional libraries used to extend on reveal.js
+
+//				multiplex: {
+//				    secret: 'null', 
+//				    id: '5beba8519e0c9782', 
+//				    url: 'localhost:1948' // Location of socket.io server
+//	},
+
 				dependencies: [
 					{ src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
 					{ src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
                     { src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
                     { src: '../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: '../reveal.js/plugin/notes/notes.js' }
+					{ src: '../reveal.js/plugin/notes/notes.js' },
+		{ src: '//cdn.socket.io/socket.io-1.3.5.js', async: true },
+		{ src: '../reveal.js/plugin/multiplex/client.js', async: true },
+		{ src: '../reveal.js/plugin/notes-server/client.js', async: true }
+
 				]
 			});
 

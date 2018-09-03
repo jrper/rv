@@ -2,6 +2,21 @@
 ### James Percival
 ### AMCG, Imperial College London 
 MovingMesh2018, University of Reading, 3rd Sept 2018
+<j.percival@ic.ac.uk>
+
+
+
+These slides are available at jrper.github.io/rv/moving_mesh.html
+
+
+### Also involved via Imperial
+
+ - Prof. Mathew Piggott
+ - Dr. Nicolas Barel 
+ - Dr. Timothy McManus
+ - Juan Nunez Rattia
+ - Ben Yeager
+ - plus many, many Fluidity developers
 
 
 
@@ -109,7 +124,22 @@ MovingMesh2018, University of Reading, 3rd Sept 2018
 
 ### Bed Scour/Sediment Transport
 
-Note: ### Ice Melt
+<video controls preload>
+<source data-src="./moving_mesh_etc/scour.mp4" type="video/mp4">
+</video>
+
+
+### Bed Scour/Sediment Transport
+
+<video controls preload>
+<source data-src="./moving_mesh_etc/pipe2d.mp4" type="video/mp4">
+</video>
+
+
+### Ice melt
+
+Systems also deform from the top
+![node movement](./moving_mesh_etc/grounding_line.png)
 
 
 
@@ -138,6 +168,10 @@ $$ \nabla\_\mathbf{x}\cdot\mathbf{u} =0. $$
 ### Derivative transformations
 
 $$\frac{\partial a}{\partial x\_i} = \sum\_j \frac{\partial \chi_j}{\partial x_i}\frac{\partial a}{\partial \chi\_j}:=\sum\_j\mathcal{J}^{-1}\_{ij}\frac{\partial a}{\partial \chi\_j}$$
+
+i.e $\nabla\_{\mathbf{x}}=\mathcal{J}^{-1}\nabla\_{\mathbf{\boldsymbol\chi}}$
+
+Advantage to evaluate when $\mathbf{x}=\boldsymbol\chi$. 
 
 
 
@@ -217,6 +251,20 @@ Springs on edges + coil springs on vertices.
 ## Coupling moving mesh + hr adaptivity
 
  - Coupling mesh optimization (especially connectivity) with in-timestep $r$-adaptivity gives best of both worlds.
+
+
+## Vertical Axis Turbine
+
+<video controls>
+<source data-src="./moving_mesh_etc/turbine_closeup_vorticity.mp4" type="video/mp4">
+</video>
+
+
+## CFD - Centrifugal pump
+
+<video controls>
+<source data-src="./moving_mesh_etc/pump_full_working.mp4" type="video/mp4">
+</video>
 
 <!---
 Note: Results - Scour
