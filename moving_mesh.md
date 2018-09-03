@@ -6,10 +6,10 @@ MovingMesh2018, University of Reading, 3rd Sept 2018
 
 
 
-These slides are available at [jrper.github.io/rv/moving_mesh.html](https://jrper.github.io/rv/mam2018.html)
+These slides are available online at [jrper.github.io/rv/mam2018.html](https://jrper.github.io/rv/mam2018.html)
 
 
-### Also involved via Imperial
+### Also involved via Imperial ESE
 
  - Prof. Mathew Piggott
  - Dr. Nicolas Barral 
