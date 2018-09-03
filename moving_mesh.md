@@ -11,7 +11,7 @@ These slides are available online at [jrper.github.io/rv/mam2018.html](https://j
 
 ### Also involved via Imperial ESE
 
- - Prof. Mathew Piggott
+ - Prof. Matthew Piggott
  - Dr. Nicolas Barral 
  - Dr. Timothy McManus
  - Juan Nunez Rattia
@@ -55,7 +55,7 @@ These slides are available online at [jrper.github.io/rv/mam2018.html](https://j
 
 ## Mesh Operations : Edge Flips/Edge-Face Flips
 
- - Modify connectivity to improve mesh
+ - Modify connectivity to improve mesh quality.
  - Meet criterion such as Delaunay.
  - Particularly cheap in 2D
 
@@ -68,7 +68,7 @@ These slides are available online at [jrper.github.io/rv/mam2018.html](https://j
 
 ## Mesh Operations : Edge Splitting
 
- - Increase degrees of freedom
+ - Increase degrees of freedom.
  - Can do mesh interpolation cheaply.
 
 
@@ -82,7 +82,7 @@ These slides are available online at [jrper.github.io/rv/mam2018.html](https://j
 
  - Reduce degrees of freedom
  - Diffusive.
-
+ - Mesh interpolation expensive.
 
 
 ## Mesh Operations : Node Movement
@@ -93,7 +93,7 @@ These slides are available online at [jrper.github.io/rv/mam2018.html](https://j
 ## Mesh Operations : Node Movement
 
  - *r*-adaptivity embeded in mesh optimization
- - mesh interpolation expensive
+ - Mesh interpolation expensive
 
 
 
