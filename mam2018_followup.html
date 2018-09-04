@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Moving meshes in Fluidity</title>
+
+		<link rel="stylesheet" href="https://jrper.github.io/reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="https://jrper.github.io/reveal.js/css/theme/white.css" id="theme">
+
+		<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+  });
+		</script>
+		<script type="text/javascript" src="https://jrper.github.io/MathJax/MathJax.js?config=TeX-AMS_HTML-full"></script>
+
+
+        <link rel="stylesheet" href="https://jrper.github.io/reveal.js/lib/css/zenburn.css">
+	<link rel="stylesheet" href="custom.css">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+
+			<section>
+                        <h3> Free Parameters for Methods</h3>
+			$$\tag{Laplacian} \nabla_\mathbf{x} \cdot  {\color{red}\gamma} \nabla_\mathbf{x} \mathbf{v} = \mathbf{0},\quad
+ \mathbf{v}=\mathbf{V}\mbox{ on }\delta\Omega. $$ 
+$$ \sigma(\mathbf{x}):=\nabla_{\mathbf{x}_0} {\color{red}\lambda} \nabla_{\mathbf{x}_0} \cdot \mathbf{x}\qquad \qquad  \qquad $$ $$\qquad +
+\nabla_{\mathbf{x}_0}{\color{red}\mu}\cdot\left(\nabla_{\mathbf{x}_0}\mathbf{x}+\left(\nabla_{\mathbf{x}_0}\mathbf{x}\right)^T\right) \tag{elastic}$$
+
+$$\mbox{"standard" } \lambda, \mu \propto V^{-\beta}$$ 
+
+$$ \sigma(\mathbf{v}):=\nabla_\mathbf{x} {\color{red}\lambda}\nabla_\mathbf{x}\cdot \mathbf{v}
++\nabla_\mathbf{x}\cdot{\color{red}\mu}\left(\nabla_\mathbf{x}\mathbf{v}+\left(\nabla_\mathbf{x}\mathbf{v}\right)^T\right) $$
+$$\quad  +{\color{red}\alpha}(\mathbf{u}-\mathbf{v}) \tag{viscous} $$
+$$\mathbf{F}(\mathbf{e}) = g(|\mathbf{e}|)\hat{\mathbf{e}}\tag {Lineal springs}$$
+
+
+			</section>
+            </div>
+		</div>
+
+		<script src="https://jrper.github.io/reveal.js/lib/js/head.min.js"></script>
+		<script src="https://jrper.github.io/reveal.js/js/reveal.js"></script>
+
+		<script>
+
+			Reveal.initialize({
+				center: true,
+
+				// Optional libraries used to extend on reveal.js
+
+//				multiplex: {
+//				    secret: 'null', 
+//				    id: '5beba8519e0c9782', 
+//				    url: 'localhost:1948' // Location of socket.io server
+//	},
+
+				dependencies: [
+					{ src: 'https://jrper.github.io/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'https://jrper.github.io/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'https://jrper.github.io/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'https://jrper.github.io/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'https://jrper.github.io/reveal.js/plugin/notes/notes.js' },
+		{ src: '//cdn.socket.io/socket.io-1.3.5.js', async: true },
+		{ src: 'https://jrper.github.io/reveal.js/plugin/multiplex/client.js', async: true },
+		{ src: 'https://jrper.github.io/reveal.js/plugin/notes-server/client.js', async: true }
+
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
