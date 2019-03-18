@@ -1,5 +1,7 @@
 # testing for C++
 
+[jrper.github.io/rv/cpp_testing.html](http://jrper.github.io/rv/cpp_testing.html)
+
 j.percival@imperial.ac.uk
 
 
@@ -14,7 +16,7 @@ j.percival@imperial.ac.uk
 ### Stages of C++ testing
 
  1. Write tests
- 2. Compile tests
+ 2. __Compile tests__
  3. Run tests
  4. Observe results
 
@@ -22,9 +24,9 @@ j.percival@imperial.ac.uk
 
 ### C++ Testing frameworks
 
- - [`googletest`\`gtest`](https://github.com/google/googletest) from google
+ - [`googletest` aka `gtest`](https://github.com/google/googletest) from Google
  - [`boost.test`](https://www.boost.org/doc/libs/1_70_0_beta1/libs/test/doc/html/index.html) part of the BOOST libraries
- - [`cppunit`](http://cppunit.sourceforge.net/doc/1.8.0/) Veteran framework, not very windows friendly.
+ - [`cppunit`](http://cppunit.sourceforge.net/doc/1.8.0/) Veteran framework, not Windows friendly.
  - *lots* of handbuilt frameworks
  - As usual [wikipedia](https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks#C++) has a table.
 
@@ -32,9 +34,9 @@ j.percival@imperial.ac.uk
 ### C++ Testing frameworks
 
 Similar structues in multiple frameworks:
- - `test cases` make logical assertions to test code
- - `test suites` collect cases to build executables
- - `test runners` call executables & collate results
+ - _`test cases`_ make logical assertions to test code
+ - _`test suites`_ collect cases to build executables
+ - _`test runners`_ call executables & collate results
 
 
 
@@ -148,7 +150,8 @@ TESTS = test1 test2
 
 test1: $(TEST_BIN_DIR)/test1
 
-$(TEST_BIN_DIR)/test1: $(TEST_BUILD_DIR)/test1.o $(BUILD_DIR)/CCircuit.o
-	$(CXX) -o $@ $^
+$(TEST_BIN_DIR)/test1: $(TEST_BUILD_DIR)/test1.o \
+                             $(BUILD_DIR)/CCircuit.o
+	     $(CXX) -o $@ $^
 
 ```

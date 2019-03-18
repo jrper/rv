@@ -1,5 +1,7 @@
 # circuit visualization
 
+[jrper.github.io/rv/seeing_circuits.html](http://jrper.github.io/rv/seeing_circuits.html)
+
 j.percival@imperial.ac.uk
 
 
@@ -30,9 +32,9 @@ Q.v:
 ### Drawing Circuits
 
 Possible free programs for individual diagrams:
- - [dia](http://dia-installer.de/index.html.en)
- - [inkscape](https://inkscape.org/download/)
- - [graphviz](https://graphviz.gitlab.io)
+ - [dia](http://dia-installer.de/index.html.en) - draws structured diagrams
+ - [inkscape](https://inkscape.org/download/) - vector graphics package
+ - [graphviz](https://graphviz.gitlab.io) - directed graph library
 
 
 
