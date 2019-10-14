@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Cellular Automata</title>
+
+		<link rel="stylesheet" href="https://revealjs.com/css/reveal.css">
+		<link rel="stylesheet" href="https://revealjs.com/css/theme/white.css">
+		<link rel="stylesheet" href="./styles.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="https://revealjs.com/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'https://revealjs.com/css/print/pdf.css' : 'https://revealjs.com/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+            <section>
+                <h1>Cellular Automata</h1>
+                <p>Boxes + a rule.</p>
+
+                <p> Second assessment due <b>Friday 18th October at 12 noon</b>.</p>
+            </section>
+            <section>
+                At the complicated end a sub-model for fluid dynamics (eg. Latice Boltzmann)
+                    <iframe src="//commons.wikimedia.org/wiki/File:Lattice_Boltzmann_computer_simulation_of_initially_stretched_droplet_relaxing_to_a_sphere.webm?embedplayer=yes" width="600" height="480" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                    <p>(video by Richard Seer via Wikipedia CC-BY-SA)</p>
+            </section>
+            <section>
+                <section>
+                <h3>Abelian Sandpile</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/jN-_-ZkhL6E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </section>
+                <section>
+                        <h3>Abelian Sandpile</h3>
+                        <p>Can run multiple sites at once</p>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/KyvBO4XjuYE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </section>
+            </section>
+            <section>
+                    <h3>Conway's Game of life</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/n8Kl-9vYo3Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </section>
+            <section>
+                    <h3>Also on other meshes</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/Y0CCGwl3Sw4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </section>
+            <section>
+                <section>
+                    <h3>A note on boundary conditions</h3>
+                    <p>Normal bcs - dead cells</p>
+                    <img src="dead_bcs.png">
+                </section>
+                <section>
+                        <p>Periodic conditions, repeating tessellation</p>
+                        <img src="periodic_bcs.png">
+                    </section>
+            </section>
+            </div>
+            </div>
+        </div>
+    
+        <script src="https://revealjs.com/js/reveal.js"></script>
+        <script>
+            // More info about config & dependencies:
+            // - https://github.com/hakimel/reveal.js#configuration
+            // - https://github.com/hakimel/reveal.js#dependencies
+            Reveal.initialize({
+                slideNumber: true,
+                hash: true,
+                history: true,
+                dependencies: [
+                    { src: 'https://revealjs.com/plugin/markdown/marked.js' },
+                    { src: 'https://revealjs.com/plugin/markdown/markdown.js' },
+                    { src: 'https://revealjs.com/plugin/notes/notes.js', async: true },
+                    { src: 'https://revealjs.com/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+                ]
+            });
+        </script>
+    </body>
+</html>

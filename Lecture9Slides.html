@@ -1,0 +1,361 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Python Dev:- Scripts, Modules and Packages</title>
+
+		<link rel="stylesheet" href="https://revealjs.com/css/reveal.css">
+		<link rel="stylesheet" href="https://revealjs.com/css/theme/white.css">
+		<link rel="stylesheet" href="./styles.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="https://revealjs.com/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'https://revealjs.com/css/print/pdf.css' : 'https://revealjs.com/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Python Dev </h2>
+					<h4> Scripts, Modules and Packages</h4>
+					<h5> James Percival </h5>
+					<h5> j.percival@imperial.ac.uk </h5>
+				</section>
+				<section>
+					<section>
+						<h5> Why Python? </h5>
+						<br>
+						<blockquote>
+						<p>Python is an interpreted, high-level, general-purpose, dynamically typed,
+						garbage-collected programming language with support for procedural
+						object-oriented, and functional programming paradigms.</p>
+
+						<p>The community of Python developers has contributed over 86,000 software
+						packages (as of 20 August 2016) to the Python Package Index (PyPI), the
+						official repository of third-party Python libraries.</p>
+
+						<p><it>(paraphased from the wikipedia 
+						<a href="https://en.wikipedia.org/wiki/Python_(programming_language)">Python</a>
+						article)</it></p>
+					    </blockquote>
+					</section>
+					<section>
+						<h5> Why Python? </h5>
+						<ul><li> Python makes simple things easy</li>
+							<li> Python makes hard things possible</li>
+						</ul>
+					</section>
+				</section>
+				<section> 
+					<h5> Today's Material </h5>
+					<ul><li> The Python Interpreter [10 minutes]</li>
+					    <li> Python Scripts :- reusable code (40 minutes)</li>
+					    <li> Python Modules :- shareable code (40 minutes)</li>
+					    <li> Python Packages :- distributable code (40 hour)</li>
+						<li> Assessment 2: Cellular Automata</li>
+					</ul>
+				</section>
+				<section>
+					<section>
+						<h3> Notebook layout</h3>
+						<div class=exercise>
+							<h4> Exercise</h4>
+							A task for you
+						</div>
+					</section>
+					<section>
+						<h3> Notebook layout</h3>
+						<div class="warnbox">
+							<h4> Warning!</h4>
+							Here be dragons!
+						</div>
+					</section>
+					<section>
+						<h3> Notebook layout</h3>
+						<div class="infobox">
+							<h4>Information</h4>
+								Useful, but not vital.
+						</div>
+					</section>
+					<section>
+						<h3> Notebook layout</h3>
+						<div class=interlude>
+							<h4>Interlude</h4>
+							For if you're getting ahead.
+						</div>
+					</section>
+				</section>
+				<section>
+					<section>
+						Ways to run Python:
+						<br>
+						<ul>
+							<li>Jupyter Notebook <span style="color:green;">&#10004;</span></li>
+							<li>Python Interpreter <span style="color:yellow;">&#9632;</span></li>
+							<li>IPython<span style="color:yellow;">&#9632;</span></li>
+							<li>Embedded code <span style="color:red;">&#10060;</span></li>
+						</ul>
+					</section>
+					<section>
+						    <p>On Windows Anaconda, use Anaconda prompt</p>
+							<pre><code class="nohighlight" style="font-size:12pt;">$ python
+Python 3.6.8 (default, Aug 20 2019, 17:12:48) 
+[GCC 8.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+Use exit() or Crtl-D (i.e. EOF) to exit
+>>></code></pre>
+						</section>
+						<section>
+						    <p>On Windows, use in Anaconda prompt</p>
+							<p>(or <code>jupyter qtconsole</code>)</p>
+							<pre><code data-trim data-noescape class="nohighlight" style="font-size:12pt;">$ ipython
+Python 3.6.8 (default, Aug 20 2019, 17:12:48)
+Type "help", "copyright", "credits" or "license" for more information.
+IPython 7.8.0 -- An enhanced Interactive Python. Type '?' for help.
+	
+<span style="color:green;">In [1]:</span></code></pre>
+						</section>
+					</section>
+					<section>
+							<div class=exercise>
+								<h4> Exercise One</h4>
+								Try them out.
+							</div>
+					</section>
+					<section>
+							<h5>Five good things about Jupyter notebooks</h5>
+							<ol>
+								<li>Code and text together</li>
+								<li>Plays nicely with graphics</li>
+								<li>Excellent teaching tool</li>
+								<li>Can use remotely</li>
+								<li>Good for browsing/hacking</li>
+							</ol>
+						</section>
+						<section>
+							<h5>Four bad things about Jupyter notebooks</h5>
+							<ol>
+								<li>Cells can run in any order</li>
+								<li>Hard to tell new output from old</li>
+								<li>Terrible for version control</li>
+								<li>Hard to collaborate</li>
+							</ol>
+						</section>
+						<section>
+							<h5>Good things about (i)Python interpreter</h5>
+								<ol>
+									<li>Code order fixed</li>
+									<li>Widely available</li>
+									<li>Hack, with history</li>
+								</ol>
+						</section>
+						<section>
+								<h5>Bad things about (i)Python interpreter</h5>
+									<ol>
+										<li>Graphics can be tricky</li>
+										<li>Fewer instructions</li>
+										<li>mostly lines, not cells</li>
+									</ol>
+							</section>
+				</section>
+				<section>
+						<section>
+								Storing Python outside a notebook:
+		<pre><code>for _ in range(10):
+			 print("Hello world")
+		</code></pre>
+		<img style="width:200px;" src="https://banner2.cleanpng.com/20180319/iqw/kisspng-text-file-computer-icons-macintosh-operating-syste-txt-file-icon-text-file-icons-softiconsm-5ab031ae297678.8289361615214964941698.jpg">
+		<br>
+								Python code is just text in a text file.
+						</section>
+					<section>
+						Ways to write Python:
+						<br>
+						<ul>
+							<li>Jupyter Notebook <span style="color:green;">&#10004;</span></li>
+							<li>VS Code (or other code editor)<span style="color:yellow;">&#9632;</span></li>
+							<li>IDEs</li>
+							<li>Notepad, nano, vi</li>
+							<li>Microsoft Word <span style="color:red;">&#10060;</span></li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>Word processors ruin code!</li>
+							<li>To a computer ", &ldquo; and &rdquo; are not the same</li>
+							<li>Watch out when copy-pasting code off the web.</li>
+						</ul>
+					</section>
+					<section>
+						<h4>The simplest command line program.</h4>
+
+<pre><code>import sys
+print(sys.argv)
+</code></pre>
+					</section>
+				</section>
+				<section>
+						<div class=exercise>
+								<h4> Exercises Two, Three, Four & Five</h4>
+								Write some code.
+							</div>	
+				</section>
+				<section>
+					<h3>Planet of the APIs</h3>
+					
+					<p>RESTful APIs like the TfL one are everywhere if you look</p>
+
+					<p>Amazing amount of data available for free by http request:
+					<ul>
+						<li><a href=https://www.aishub.net>Global shipping positions</a> </li>
+						<li><a href="https://data.police.uk/docs/">Crime data in the UK</a></li>
+						<li><a href="https://github.com/gamagori/pizzapi"> Ordering pizzas from Domino's</a></li>
+					</ul>
+					</p>
+				</section>
+				<section>
+					<section>
+					    <h3> PEP8 - Python style.</h3>
+						<p>This code will run</p>
+<pre><code>import numpy as np; x=np.empty((10,10),float)
+for i in range(10):
+  for j in range(10):
+    x[i,j]=i+2*j
+for i in range(10):
+    x[i,i]=i</code></pre>
+						<p>But it's suprsisingly hard to read.</p>
+					</section>
+					<section>
+						<p> Python coding standard, PEP8 makes recommendations on
+							well styled code, eg:
+						<ul><li> For spaces per block when indenting.</li>
+							<ll> A space either side of = when assigning.</li>
+							<li> Add a space after a ,</li>
+							<li> Use blank lines (sparingly) to divide sections.</li>
+						</ul></p>
+					</section>
+					<section>
+						<p></p>Other people do this so you should too. Your editor can help.</p>
+<pre><code>import numpy as np; x=np.empty((10,10),float)
+for i in range(10):
+    for j in range(10):
+		x[i, j] = i+2*j
+
+for i in range(10):
+	x[i,i]=i</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2> Module Files :- Code reuse</h2>
+						There are lots of coding mnemonics:
+						<ul>
+							<li>KISS: Keep It Simple & Stupid</li>
+							<li>YAGNI: You ain’t gonna need it</li>
+							<li>DRY: Don't repeat yourself</li>
+						</ul>
+					</section>
+					<section>
+						<p>In C, unit of shareable code is the library (<code>.so</code>/<code>.dll</code> file)</p>
+
+						<p>In Python, unit of sharable code is module file (<code>.py</code>).
+							Also a text file, and might be useable as ascript</p>
+
+						<p>Counts as a module if you can <code>import</code> it.</p>
+					</section>
+					<section>
+						<h3>Docstrings: Source documentation</h3>
+						<p>When writing for reuse documentation is important</p>
+<pre><code>def factorial(x):
+	"""Return the factorial function via recursion.
+
+	Parameters
+	----------
+	x : int
+		input integer
+
+	Returns
+	-------
+	int
+		factorial of x
+	"""
+	if x==1:
+		return x
+	else:
+		return x*factorial(x-1)
+</code></pre>
+					</section>
+					<section>
+							<div class=exercise>
+								<h4> Exercise Six & Seven</h4>
+								Making Modules.
+							</div>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Python Packages</h2>
+						<p>Individual module files can be chucked about anywhere</p>
+						<p>Real power comes by combining them into installable packages
+							(via <code>pip</code>, <code>conda</code> etc.)</p>
+					</section>
+					<section>
+						<h3> Notional package</h3>
+<pre>mycoolproject
+├── extras
+|	├── __init__.py
+|	├── __main__.py
+|	└── extra_stuff.py
+├── tests
+|   └── test_cool_module.py
+├── __init__.py
+├── cool_module.py
+└── another_cool_module.py
+.gitignore
+.travis.yml
+LICENSE.txt
+README.md	
+requirements.txt
+setup.py
+</pre>
+					</section>
+					<section>
+							<div class=exercise>
+								<h4> Exercise Eight & Nine</h4>
+								Packaging Python.
+							</div>
+					</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="https://revealjs.com/js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				slideNumber: true,
+				hash: true,
+				history: true,
+				dependencies: [
+					{ src: 'https://revealjs.com/plugin/markdown/marked.js' },
+					{ src: 'https://revealjs.com/plugin/markdown/markdown.js' },
+					{ src: 'https://revealjs.com/plugin/notes/notes.js', async: true },
+					{ src: 'https://revealjs.com/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
