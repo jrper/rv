@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Python Dev:- Scripts, Modules and Packages</title>
+
+		<link rel="stylesheet" href="https://revealjs.com/css/reveal.css">
+		<link rel="stylesheet" href="https://revealjs.com/css/theme/white.css">
+		<link rel="stylesheet" href="./styles.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="https://revealjs.com/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'https://revealjs.com/css/print/pdf.css' : 'https://revealjs.com/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h3>Flood Risk Prediction Tool</h3>
+					<h4>Technical Specification</h4>
+					<h5> James Percival </h5>
+					<h5> j.percival@imperial.ac.uk </h5>
+				</section>
+				<section>
+					<h3> A UK Flood Risk Tool</h3>
+				</section>
+				<section>
+					<h4>The repository stub</h4>
+				</section>
+				<section>
+					<h4> The scoring algorithm</h4>
+				</section>
+				<section>
+					<code>get_easting_northing_from_lat_long</code>
+					<ul>
+						<li> Convert from latitude-longitude (i.e GPS) to Ordnance
+							 Survey National Grid Easting and Northing (in metres)</li>
+					    <li>Geographic coordinate conversion</li>
+						<li> Full details in documentation file</li>
+					</li></ul>
+				</section>
+				<section>
+					<code>flood_tool.Tool</code>
+					<ul>
+						<li>initialize class from .csv files<ol>
+						<li> postcodes.csv - all postcodes in an area</li>
+						<li> flood_probability.csv - banded liklihood of flooding in regions</li>
+						<li> property_values.csv - pound values of properties in specific regions</li></ol></li>
+					    <li> Can do extra maths or setup.</li>
+					</ul>	
+				</section>
+				<section>
+					<code>Tool.get_lat_long</code>
+						<ul>
+							<li>Look up postcode latitudes & longitudes from csv database</li>
+<pre><code>>>> t.get_lat_long(["SW7 2AZ",])
+
+</code></pre>
+						</ul>	
+				</section>
+				<section>
+					<code>Tool.get_easting_northing_flood_probability</code>
+					<ul>
+						<li>Find the flood probability band for a set of points.</li>
+					</ul>
+<pre><code>>>> t.get_lat_long(["SW7 2AZ",])
+</code></pre>
+				<section>
+					<code>Tool.get_sorted_flood_probability</code>
+					<ul>
+						<li>Sort postcodes by flood probability.</li>
+						<li>Highest risk first.</li>
+					</ul>
+				</section>
+				<section>
+					<code>flood_tool.Tool.get_flood_cost</code>
+					<ul>
+						<li></li>
+					</ul>
+				</section>
+				<section>
+					<code>flood_tool.Tool.get_annual_flood_risk</code>
+					<ul>
+						<li></li>
+					</ul>
+				</section>
+				<section>
+					<code>flood_tool.Tool.get_sorted_annual_flood_risk</code>
+					<ul>
+						<li></li>
+					</ul>
+				</section>
+				<section>
+					<h4>Environment Agency API</h4>
+				</section>
+				<section>
+					<h2> Workflows</h2>
+				</section>
+				<section>
+					<h4>Testing</h4>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="https://revealjs.com/js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				slideNumber: true,
+				hash: true,
+				history: true,
+				dependencies: [
+					{ src: 'https://revealjs.com/plugin/markdown/marked.js' },
+					{ src: 'https://revealjs.com/plugin/markdown/markdown.js' },
+					{ src: 'https://revealjs.com/plugin/notes/notes.js', async: true },
+					{ src: 'https://revealjs.com/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
