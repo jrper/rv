@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Python Dev:- Scripts, Modules and Packages</title>
+		<title>Flood Risk Prediction Tool:- Technical Specification</title>
 
 		<link rel="stylesheet" href="https://revealjs.com/css/reveal.css">
 		<link rel="stylesheet" href="https://revealjs.com/css/theme/white.css">
@@ -29,87 +29,256 @@
 					<h3>Flood Risk Prediction Tool</h3>
 					<h4>Technical Specification</h4>
 					<h5> James Percival </h5>
-					<h5> j.percival@imperial.ac.uk </h5>
-				</section>
-				<section>
-					<h3> A UK Flood Risk Tool</h3>
+					<h5> <span style="color:blue;"><code>https://jrper.github.com/rv/ACSE4-2019.html</code></span></h5>
 				</section>
 				<section>
 					<h4>The repository stub</h4>
+					<ul>
+						<li> Stub provided via GitHub Classrooms</li>
+						<li> Basic skeleton, plus some initial code.</li>
+						<li> To <a href="https://github.com/acse-2019/">GitHub</a></li>
+					</ul>
 				</section>
 				<section>
-					<h4> The scoring algorithm</h4>
+					<section>
+						<h4> The scoring algorithm</h4>
+						<ul>
+							<li>Runs <code>pytest</code> style tests on your code</li>
+							<li><pre><code>python -m score</code></pre>	run in repo root</li>
+							<li>Sections are timed, modifying your score</li>
+						</ul>	
+					</section>
+					<section>
+						<pre><code>get_easting_northing_from_lat_long: test errored, 0 points
+	effective time 1.200e+02 seconds
+tool: test ran, 100 points
+tool initialization: time 8.886e-06, 1 of 1
+	effective time 8.886e-06 seconds
+get_lat_long: test errored, 0 points
+	effective time 6.000e+01 seconds
+get_easting_northing_flood_probability: test errored, 0 points
+	effective time 3.000e+02 seconds
+get_sorted_flood_probability: test errored, 0 points
+	effective time 2.400e+02 seconds
+get_flood_cost: test errored, 0 points
+	effective time 1.200e+02 seconds
+get_annual_flood_risk: test errored, 0 points
+	effective time 2.400e+02 seconds
+get_sorted_annual_flood_risk: test errored, 0 points
+	effective time 2.400e+02 seconds
+total: 100, effective time 1.320e+03 seconds</code></pre>
+					</section>
 				</section>
 				<section>
+					<h4> Permitted Packages</h4>
+					<ul>
+						<li>Anything from ACSE 1, e. g.
+							<ul>
+								<li>standard libraries</li>
+								<li><code>numpy</code></li>
+								<li><code>scipy</code></li>
+								<li><code>matplotlib</code></li>
+								<li><code>pandas</code></li>
+								<li><code>dask</code></li>
+								<li><code>pytest</code></li>
+								<li><code>pyqt</code>, <code>tk</code>, <code>pygobject</code></li>
+							</ul>
+						<li>Anything else, please ask!</li> 
+					</ul>
+				</section>
+				<section>
+					<section>
+						<h4>A note on postcodes</h4>
+						<ul>
+							<li>UK name for postal code, like US ZIP code, Chinese 邮政编码 etc.</li>
+							<li>Divides into outward and inward sections</li>
+							<li>Outward has area (eg. SW) & district (eg. 7)</li>
+							<li>Inward has sector (eg. 2) & unit (eg. AZ)</li>
+							<li>Outward 3 or 4 characters, inward 3</li>
+							<li>Preferred human readable format: SW7 2AZ</li>
+						</ul>
+					</section>
+					<section>
+						<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/British_postcode_areas_map.svg/300px-British_postcode_areas_map.svg.png">
+						<p><span style="font-size:10pt;">Attribution: Contains Ordnance Survey and Royal Mail data © Crown copyright and database right (2019)</span></p>
+					</section>
+					<section>
+						Many formats in use on computer
+						<ul>
+							<li><code>"SW19 5AE"</code>, <code>"SW7 2AZ"</code></li>
+							<li><code>"SW195AE"</code>, <code>"SW7 2AZ"</code>(use here)</li>
+							<li><code>"SW19 5AE"</code>, <code>"SW7  2AZ"</code></li>
+						</ul>
+
+					</section>
+				</section>
+				<section>
+					<section>
 					<code>get_easting_northing_from_lat_long</code>
 					<ul>
 						<li> Convert from latitude-longitude (i.e GPS) to Ordnance
 							 Survey National Grid Easting and Northing (in metres)</li>
-					    <li>Geographic coordinate conversion</li>
+						<li><a href="https://en.wikipedia.org/wiki/Geographic_coordinate_conversion">
+							Geographic coordinate conversion</a></li>
 						<li> Full details in documentation file</li>
-					</li></ul>
+					</ul>
+					<pre><code>>>> get_easting_northing_from_lat_long([51.197], [1.38])
+(array([636604]), array([149652])</code></pre>
+					</section>
+					<section><img src="./ACSE4-lat-lon-vs-EN.png"></section>
 				</section>
 				<section>
 					<code>flood_tool.Tool</code>
 					<ul>
 						<li>initialize class from .csv files<ol>
 						<li> postcodes.csv - all postcodes in an area</li>
-						<li> flood_probability.csv - banded liklihood of flooding in regions</li>
-						<li> property_values.csv - pound values of properties in specific regions</li></ol></li>
+						<li> flood_probability.csv - banded likelihood of flooding in regions</li>
+						<li> property_values.csv - £ values of insured properties in specific regions</li></ol></li>
 					    <li> Can do extra maths or setup.</li>
-					</ul>	
+					</ul>
+					<pre><code>>>> t = flood_tool.Tool("postcodes.csv",
+			"flood_probabilities.csv",
+			"property_values.csv")</code></pre>
 				</section>
 				<section>
 					<code>Tool.get_lat_long</code>
 						<ul>
-							<li>Look up postcode latitudes & longitudes from csv database</li>
-<pre><code>>>> t.get_lat_long(["SW7 2AZ",])
-
-</code></pre>
+							<li>Look up postcode latitudes & longitudes</li>
+<pre><code>>>> t.get_lat_long(["SW7 2AZ"])
+array([[51.4981, -0.1773]])</code></pre>
 						</ul>	
 				</section>
 				<section>
+					<section>
 					<code>Tool.get_easting_northing_flood_probability</code>
 					<ul>
-						<li>Find the flood probability band for a set of points.</li>
+						<li>Find the flood probability band for a set of points</li>
+						<li>Input in easting-northing space</li>
+						<li>Return highest flood probability intersecting point</li>
+						<li>Most maths/computer science: Spatial database</li>
 					</ul>
-<pre><code>>>> t.get_lat_long(["SW7 2AZ",])
-</code></pre>
+<pre><code>>>> t.get_easting_northing_flood_probability([526645], [179284])
+array(['Zero'])</code></pre>
+					 </section>
+					 <section><img src="./ACSE4-example.png"></section>
+				</section>
 				<section>
 					<code>Tool.get_sorted_flood_probability</code>
 					<ul>
 						<li>Sort postcodes by flood probability.</li>
-						<li>Highest risk first.</li>
+						<li>Highest risk first, then alphabetical by postcode.</li>
 					</ul>
+<pre><code>>>> t.get_easting_northing_flood_probability(["SW7 2AZ", "ME130QU"])
+		Probability Band
+Postcode 
+ME130QU    High         
+SW7 2AZ    Zero</code></pre>
 				</section>
 				<section>
 					<code>flood_tool.Tool.get_flood_cost</code>
 					<ul>
-						<li></li>
+						<li>Get insured cost (in £) of a flood event</li>
+						<li>Data is in <code>property_values.csv</code></li>
 					</ul>
+<pre><code>>>> t.get_flood_cost(["SW7 2AZ"])
+array([1000000.])</code></pre>
 				</section>
 				<section>
 					<code>flood_tool.Tool.get_annual_flood_risk</code>
 					<ul>
-						<li></li>
+						<li>Convert probability into expected cost/year (in £).</li>
 					</ul>
+<pre><code>>>> t.get_annual_flood_risk(["SW7 2AZ"], ["Zero"])
+array([0.])</code></pre>
+</code></pre>
 				</section>
 				<section>
 					<code>flood_tool.Tool.get_sorted_annual_flood_risk</code>
 					<ul>
-						<li></li>
+						<li>Get sorted list of risks</li>
 					</ul>
+<pre><code>>>> t.get_easting_northing_flood_probability(["SW7 2AZ", "ME130QU"])
+		Flood Risk
+Postcode 
+ME130QU  35234.0         
+SW7 2AZ       0.</code></pre>
 				</section>
 				<section>
 					<h4>Environment Agency API</h4>
-				</section>
-				<section>
-					<h2> Workflows</h2>
+					<ul>
+						<li><a href="https://environment.data.gov.uk/flood-monitoring/doc/rainfall#measures">RESTful http API.</a></li>
+						<li>Live data and information on stations.</li>
+						<li>Last 28 days live.</li>
+						<li>Historical data (last year) as file per day.</li>
+					</ul>
 				</section>
 				<section>
 					<h4>Testing</h4>
+					<ul>
+						<li>Stub has <code>pytest</code> tests for existing code</li>
+						<li>Travis is set up to run (for Python 3.7)</li>
+						<li>Also checks scoring routine will run.</li>
+						<li>2 submissions run concurrently: be polite!</li>
+					</ul>
 				</section>
-
+				<section>
+					<section>
+						<h4> Collaborative Workflows with <code>git</code></h4>
+						<ul>
+							<li>Want to:<ul>
+								<li> maximize productivity</li>
+								<li>minimize errors</li>
+								<li>minimize difficulty</li></ul></li>
+							<li><a href="https://www.atlassian.com/git/tutorials/comparing-workflows">Atlassian tutorial</a></li>
+							<li>Final choice is yours, but here's some advice</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Option 1: Free for all</h4>
+						<img width=300px src="https://wac-cdn.atlassian.com/dam/jcr:adf8c8e3-4287-4ec1-acf7-2a052d61d03f/13.svg?cdnVersion=638">
+						<ul>
+							<li>All work in <code>master</code></li>
+							<li>Compete to push first</li>
+							<li>Hope nothing breaks!</li>
+							<li>Not recommended for teams above 2 or 3</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Option 2: One branch each</h4>
+						<img width=400px src=https://www.atlassian.com/dam/jcr:09308632-38a3-4637-bba2-af2110629d56/07.svg>
+						<br>
+						<ul>
+							<li>Each work in a single branch</li>
+							<li>Pull from <code>master</code> often</li>
+							<li>Fewer conflicts, not much git</li>
+							<li>Sometimes hard to collaborate</li>
+							<li>Can use pull requests</li>
+						</ul>
+					</section>
+					<section>
+							<h4>Option 3: Full GitHub workflow</h4>
+							<img width=400px src=https://www.atlassian.com/dam/jcr:09308632-38a3-4637-bba2-af2110629d56/07.svg>
+							<br>
+							<ul>
+								<li>Branch for each feature</li>
+								<li>Pull from <code>master</code> often</li>
+								<li>Work together on features</li>
+								<li>Must use pull requests</li>
+								<li>More branch switching, more <code>git</code></li>
+							</ul>
+					</section>
+				</section>
+				<section><h3> Division of labour </h3>
+					<ul>
+						<li>Final division is up tp to you</li>
+						<li>Can be democratic, or choose a manager</li>
+						<li>One possible dependency tree</li>
+					</ul>
+					<img width=500px src="./ACSE4.png">
+				</section>
+				<section>
+					<h2>Questions?</h2>
+				</section>
 			</div>
 		</div>
 
