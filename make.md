@@ -1,5 +1,7 @@
 # Make and friends
 
+jrper.github.io/rv/make.html
+
 j.percival@imperial.ac.uk
 
 
@@ -60,13 +62,29 @@ $>
 ```
 
 
+### The Windows version
+
+On unix-like systems:
+
+- default C compiler is `cc`, C++ compiler is `c++`
+- linker is `ld` (can just call compiler)
+
+On Windows:
+- Compiler is `cl.exe` for both,
+- Linker is `link.exe`.
+- Configure `.vcxproj` files with `msbuild.exe` or `devenv.exe`.
+
+See the [Microsoft documentation](https://docs.microsoft.com/en-us/cpp/build/building-on-the-command-line?view=vs-2019) for more.
+
+
+
 ### Compiling & Linking
-Gets very complicated as you include more compiler options, link to more source files, include more headers from non-standard paths and link to more and more libraries:
+Operations get very complicated as you include more compiler options, link to more source files, include more headers from non-standard paths and link to more and more libraries:
 
 ```
 cxx -DUSE_VTK=1 -I/usr/local/include -I/apps/vtk myfile.cpp \
  myotherfile.cpp another_file.o yetanotherfile.o \
- -O3 -ggdb -ffast-math -lX -lm -L/usr/lib/vtk-5.10 \
+ -O3 -g -ffast-math -lX -lm -L/usr/lib/vtk-5.10 \
  -lvtkCommonCore -lpng -o myfile
 ```
 
@@ -74,9 +92,11 @@ cxx -DUSE_VTK=1 -I/usr/local/include -I/apps/vtk myfile.cpp \
 ### Compiling & Linking
 
 Here we're using various compiler options:
+- The `-D` sets macros for `#ifdef` etc
 - The `-I` adds to the header search path,
 - The `-L` adds to the library search path
 - The `-O3` specifies maximum compiler optimizations
+- The `-g` leaves names for debugging
 - The `-lpng` links in the `libpng` library (using the shared `libpng.so` version by default).
 
 
@@ -90,13 +110,40 @@ A lot of stuff  to remember. Nicer to automate.
 
 
 
-### GNU make: A program to build programs
+### A shell script version
+
+A halfhearted attempt will put commands in a text file, say `compile.sh`
+
+```
+#!/usr/env bash
+
+cxx -DUSE_VTK=1 -I/usr/local/include -I/apps/vtk myfile.cpp \
+ myotherfile.cpp another_file.o yetanotherfile.o \
+ -O3 -g -ffast-math -lX -lm -L/usr/lib/vtk-5.10 \
+ -lvtkCommonCore -lpng -o myfile
+ ```
+
+use `chmod u+x compile.sh` one time, then
+
+```
+./compile.sh
+```
+
+
+
+### GNU make
+#### A program to build programs
 
 The GNU tool `make` uses recipes from text files, called `Makefile`s to automate and control the build process.
 
-Help at the command line: `make -h`, `man make` or `info make`.
+Basic help available at the command line: `make -h`, `man make` or `info make`.
+
 
 Original `make` was created by Stuart Feldman in April 1976 at Bell Labs.
+
+Windows has its own version called `nmake`
+
+Gnu `make` and windows `nmake` not really very compatible, due to things like `-I` versus `/I`.
 
 
 _Make originated with a visit from Steve Johnson storming into my office, cursing the Fates that had caused him to waste a morning debugging a correct program (bug had been fixed, file hadn't been compiled, cc *.o was therefore unaffected)._
@@ -135,7 +182,7 @@ Run the command to build the biscuit target as
 ```
 make biscuit
 ```
-(or just `make` to build default target)
+(or just `make` to build default target, usually first one)
 - By default, recipe lines must start with `tab` characters, NOT spaces.
 - Variables are referenced with `$(variable_name)` or `${variable_name}`
 - Defaults to run each line in its OWN subshell.
@@ -156,7 +203,7 @@ sugar.o: sugar.c
 	$(CXX) sugar.cpp -c
 
 biscuit:  eggs.o flour.o sugar.o
-	$(CC) eggs.o flour.o sugar.o -o biscuit
+	$(CXX) eggs.o flour.o sugar.o -o biscuit
 ```
 
 
@@ -185,15 +232,15 @@ Make has a _lot_ of default recipes installed with it.
 
 Make variables can be:
 
-- Set in the Makefile itself as `VARNAME=<value>`
+- Set in the Makefile itself as `VARNAME=<value>` (no tabs)
 - Set at the command line with `make CXX=icc`
-- Inherited from the environment (eg. earlier `export VARNAME=<value>`)
+- Inherited from the environment (eg. an earlier `export VARNAME=<value>`)
 
 
 ### Make variables
 
 - Some variables like `${CC}`come with preassigned with default values (usually GNU tools such as gcc).
-- Tools like CMake and autotools build up variables to build Makefiles
+- Tools like CMake and autotools build up variables to build Makefiles.
 
 
 
