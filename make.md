@@ -196,10 +196,10 @@ Can get faster rebuilds by storing intermediate files
 eggs.o: eggs.cpp
 	$(CXX) eggs.cpp -c
 
-flour.o: flour.c
+flour.o: flour.cpp
 	$(CXX) flour.cpp -c
 
-sugar.o: sugar.c
+sugar.o: sugar.cpp
 	$(CXX) sugar.cpp -c
 
 biscuit:  eggs.o flour.o sugar.o
