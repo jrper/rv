@@ -48,20 +48,23 @@ Current ACSE course has number of issues
 
 <div class="col" data-markdown>
 
-- personality clashes
-- heteogeneuos IT
-- slow feedback
-- incomplete synergy
-- bored high achievers
+<ul>
+<li> personality clashes</li>
+<li> heteogeneuos IT</li>
+<li> slow feedback</li>
+<li> incomplete synergy</li>
+<li> bored high achievers</li>
+</ul>
 
 </div>
 <div class="col" data-markdown>
 
-- silent strugglers
-- intense schedules
-- lack of trained GTAs
-- risks of plagarism
-- attendance
+<ul>
+<li> silent strugglers</li>
+<li> intense schedules</li>
+<li> lack of trained GTAs</li>
+<li> risks of plagarism</li>
+<li> attendance</li>
 </div>
 
 </div>
@@ -72,21 +75,23 @@ Some from previous decisions/cost of doing business:
 <div class="container">
 
 <div class="col" data-markdown>
-
-- <span style="color:blue;">personality clashes</span>
-- <span style="color:blue;">heteogeneuos IT
-- slow feedback
-- <span style="color:blue;">incomplete synergy</span>
-- bored high achievers
+<ul>
+<li> <span style="color:blue;">personality clashes</span></li>
+<li> <span style="color:blue;">heteogeneuos IT</li>
+<li> slow feedback</li>
+<li> <span style="color:blue;">incomplete synergy</span></li>
+<li> bored high achievers</li>
+</ul>
 
 </div>
 <div class="col" data-markdown>
-
-- silent strugglers
-- <span style="color:blue;">intense schedules</span>
-- lack of trained GTAs
-- risks of plagarism
-- <span style="color:blue;">attendance</span>
+<ul>
+<li> silent strugglers</li>
+<li> <span style="color:blue;">intense schedules</span></li>
+<li> lack of trained GTAs</li>
+<li> risks of plagarism</li>
+<li> <span style="color:blue;">attendance</span></li>
+</ul>
 </div>
 
 </div>
@@ -98,20 +103,24 @@ Some strongly exacerbated by scale:
 
 <div class="col" data-markdown>
 
-- <span style="color:blue;">personality clashes</span>
-- <span style="color:blue;">heteogeneuos IT</span>
-- <span style="color:red;">slow feedback</span>
-- <span style="color:blue;">incomplete synergy</span>
-- <span style="color:red;">bored high achievers</span>
+<ul>
+<li><span style="color:blue;">personality clashes</span></li>
+<li><span style="color:blue;">heteogeneuos IT</span></li>
+<li><span style="color:red;">slow feedback</span></li>
+<li><span style="color:blue;">incomplete synergy</span></li>
+<li><span style="color:red;">bored high achievers</span></li>
+</ul>
 
 </div>
 <div class="col" data-markdown>
 
-- <span style="color:red;">silent strugglers</span>
-- <span style="color:blue;">intense schedules</span>
-- <span style="color:red;">lack of trained GTAs</span>
-- <span style="color:red;">risks of plagarism</span>
-- <span style="color:blue;">attendance</span>
+<ul>
+<li><span style="color:red;">silent strugglers</span></li>
+<li><span style="color:blue;">intense schedules</span></li>
+<li><span style="color:red;">lack of trained GTAs</span></li>
+<li><span style="color:red;">risks of plagarism</span></li>
+<li><span style="color:blue;">attendance</span></li>
+</ul>
 </div>
 
 </div>
