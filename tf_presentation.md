@@ -165,7 +165,7 @@ Negative points:
 
 Can be served as web pages (optionally with login)
 
-https://jrperacsemcq.azurewebsites.com
+https://jrperacsemcq.azurewebsites.net
 or
 http://129.31.136.219/questions
 
