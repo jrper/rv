@@ -1,4 +1,4 @@
-# testing for C++
+# SPH Code & Testing for C++
 
 [jrper.github.io/rv/cpp_testing.html](http://jrper.github.io/rv/cpp_testing.html)
 
@@ -6,14 +6,40 @@ j.percival@imperial.ac.uk
 
 
 
-### Stages of python testing
+### SPH Repository stub
+
+Stub follows generic template
+
+- `.travis.tml` for Travis
+- `Makefile` to build on Travis
+- `README.md` for GitHub
+- `requirements.txt` for useful Python modules
+- `include/` for header files
+- `src/` for `.cpp` files
+- `tests/` for test files
+
+
+
+### Software Sustainability in ACSE 4.3
+
+- Core programming language now C++
+- Continued expectation that code will be:
+  * clear
+  * correct
+  * extendable
+  * robust
+- Testing helps to tick these boxes
+  
+
+
+### Three Stages of Python testing
 
  1. Write tests
  2. Run tests
  3. Observe results
 
 
-### Stages of C++ testing
+### Four Stages of C++ testing
 
  1. Write tests
  2. __Compile tests__
@@ -24,7 +50,7 @@ j.percival@imperial.ac.uk
 
 ### C++ Testing frameworks
 
- - [`googletest` aka `gtest`](https://github.com/google/googletest) from Google
+ - [`googletest`](https://github.com/google/googletest) aka [`gtest`](https://github.com/google/googletest) from Google
  - [`boost.test`](https://www.boost.org/doc/libs/1_70_0_beta1/libs/test/doc/html/index.html) part of the BOOST libraries
  - [`cppunit`](http://cppunit.sourceforge.net/doc/1.8.0/) Veteran framework, not Windows friendly.
  - *lots* of handbuilt frameworks
@@ -33,26 +59,27 @@ j.percival@imperial.ac.uk
 
 ### C++ Testing frameworks
 
-Similar structues in multiple frameworks:
+Similar structures in multiple frameworks:
  - _`test cases`_ make logical assertions to test code
  - _`test suites`_ collect cases to build executables
  - _`test runners`_ call executables & collate results
+Often more boilerplate than `pytest`
 
 
 
-### Genetic Algorithm project
+### Smoothed Particle Hydrodynamics project
 
-Template project repository contains a python-based test runner `run_tests.py`,
-with a Makefile (for CX1/travis).
+Template project repository contains a simple hand-rolled Python-based test runner `run_tests.py`,
+with a Makefile (for CX1/Travis).
 
 ```
 make runtests
 ```
 
-Code will also compile/run on Windows with a suitable visual studio setup.
+Code will also compile/run on Windows with a suitable Visual Studio setup.
 
 
-### Genetic Algorithm project
+### Smoothed Particle Hydrodynamics project
 
 `run_tests.py` calls executables in `tests/bin` directory, built from `.cpp` files in
 `tests`.
@@ -62,63 +89,50 @@ If an executable:
  - has `fail` in its output
  test is logged as failing.
 
+Also runs Python functions in `python_tests.py` files in `tests`
 
-### An example test case
+
+### An example C++ test case
 
 ```
-    int valid[3] = {0, 1, 2};
+	// my_function test case
+	std::cout << "Test my_function\n"
 
-    if (Check_Validity(valid))
+    int mock_input[3] = {0, 1, 2};
+
+    if (my_function(mock_input) == 3)
 		std::cout << "pass\n";
 	else
 		std::cout << "fail\n";
 ```
 
 
-### An example test case
+### Can check output with Python
 
-In the template repository, this is testing Stephen's stub validity checker:
+E.g.`file_writer.cpp` is a zero-dependency code outputting particle data in a [ParaView](https://www.paraview.org/) readable [VTK file format](https://vtk.org/wp-content/uploads/2015/04/file-formats.pdf).
+
+`test_file_writer.cpp` just generates data and calls functions.
+
+Check output using the Python `vtk` module.
+
 
 ```
-bool Check_Validity(int *circuit_vector)
-{
-  return true;
-}
-```
+import vtk
 
-test is on minimum valid circuit:
+def test_file_writer_output():
+    reader = vtk.vtkXMLPolyDataReader()
+    reader.SetFileName('tests/test_file_writer.vtp')
+    reader.Update()
 
-
-### An example test case
-
-![](seeing_circuits_images/circuit3.png)
-
-
-What about an invalid one?
-
-
-
-### Another example test case
-
-![](seeing_circuits_images/circuit4.png)
-
-
-### Another example test case
-
-```
-	int invalid[3] = {0, 2, 2};
-
-	if (Check_Validity(invalid))
-		std::cout << "fail\n";
-	else
-		std::cout << "pass\n";
+    pdata = reader.GetOutput()
+    assert pdata.GetPoint(5) == (5.0, 5.0, 0.0)
 ```
 
 
 ### The Makefile
 
-Lots of things aren't currently tested (e.g. `mark_unit` function).
-You will probably want to add tests/files.
+Lots of things aren't currently tested.
+You may want to add tests/files.
 
 One option is to just add more test cases to existing files:
 
@@ -127,31 +141,31 @@ tests/test1.cpp
 tests/test2.cpp
 ```
 
-Easy to add, but may cause conflicts on github.
+Easy to modify, but can cause conflicts on github.
 
 
 ### The Makefile
 
-Another good option is to have (at least) one test file for each team.
- - Genetic Algorithm 
- - Circuit modelling
- - Validity checking
+Another good option is to have (at least) one test file for each work package.
+ - Core SPH code
+ - IO
+ - Post-processing
 
 Also tells you who to talk to:
 
 
 ### The Makefile
 
-Add tests to makefile by copying structure from the lines for `test1` & `test2`
+Add C++ test files to <akefile by copying structure from the lines for `test_file_writer`
 
 ```
 
-TESTS = test1 test2
+TESTS = test_blah_blah
 
-test1: $(TEST_BIN_DIR)/test1
+test_blah_blah: $(TEST_BIN_DIR)/test1
 
-$(TEST_BIN_DIR)/test1: $(TEST_BUILD_DIR)/test1.o \
-                             $(BUILD_DIR)/CCircuit.o
+$(TEST_BIN_DIR)/test1: $(TEST_BUILD_DIR)/blah_blah.o \
+                             $(BUILD_DIR)/other_file.o
 	     $(CXX) -o $@ $^
 
 ```
