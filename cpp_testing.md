@@ -96,7 +96,7 @@ Also runs Python functions in `python_tests.py` files in `tests`
 
 ```
 	// my_function test case
-	std::cout << "Test my_function\n"
+	std::cout << "Test my_function: ";
 
     int mock_input[3] = {0, 1, 2};
 
@@ -107,7 +107,19 @@ Also runs Python functions in `python_tests.py` files in `tests`
 ```
 
 
-### Can check output with Python
+### An example C++ test case
+
+Can put in the `main` of `test_SPH_2d.cpp`, or as separate function.
+
+Can call the test executables directly to see errors
+
+```
+$ ./tests/bin/test_SPH_2D
+Test my_function: pass
+```
+
+
+### Can also check output with Python
 
 E.g.`file_writer.cpp` is a zero-dependency code outputting particle data in a [ParaView](https://www.paraview.org/) readable [VTK file format](https://vtk.org/wp-content/uploads/2015/04/file-formats.pdf).
 
@@ -129,6 +141,7 @@ def test_file_writer_output():
 ```
 
 
+
 ### The Makefile
 
 Lots of things aren't currently tested.
@@ -146,7 +159,7 @@ Easy to modify, but can cause conflicts on github.
 
 ### The Makefile
 
-Another good option is to have (at least) one test file for each work package.
+Another good option is to have (at least) one test file for each work package, eg:
  - Core SPH code
  - IO
  - Post-processing
