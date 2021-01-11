@@ -1,0 +1,206 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Impact Tool:- Technical Specification</title>
+
+		<link rel="stylesheet" href="../reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="../reveal.js/css/theme/white.css">
+		<link rel="stylesheet" href="./styles.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'https://revealjs.com/css/print/pdf.css' : 'https://revealjs.com/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h3>Impact Locator/ Damage mapper</h3>
+					<h4>Additional Technical details</h4>
+					<h5> James Percival </h5>
+					<h5> <span style="color:blue;"><code>https://jrper.github.com/rv/ACSE4-2020.html</code></span></h5>
+				</section>
+				<section>
+					<section>
+						<h4>The repository mapper/locator stub</h4>
+						<ul>
+							<li> Stub provided via GitHub Classrooms</li>
+							<li> Basic skeleton, plus some initial code.</li>
+							<li> Back to <a href="https://github.com/acse-2020/acse-4-armageddon-template">GitHub</a></li>
+						</ul>
+					</section>
+					<section>
+						<ol>
+							<li>Run <code>download_data.py</code> to get postcode data</li>
+							<li>See <code>locator.py</code> for stub code functions</li>
+							<li>See <code>DamageMapper.ipynb</code> for useful equations</li>
+						</ol>
+					</section>
+				</section>
+				<section><img src="./ACSE4-lat-lon-vs-EN.png"></section>
+				  <section>
+					<h4>A few notes on (geo)spatial indexing</h4>
+					<ul>
+						<li> Data has been given in latitude-longitude pairs</li>
+						<li> You will need to find nearby points using metre</li>
+						<li> Full conversion is non-trivial, but you should assume a spherical Earth</li>
+						<li> OK to rearrange/preprocess data for faster lookups</li>
+					</ul>
+				</section>
+				<section>
+					<ul>
+						<li>Many, many approaches (bounding boxes, gridding, R-trees, kd-trees, etc)</li>
+						<li>Given limited development time, start simple</li>
+						<li>Can be worth sieving data with a cheap check before doing expensive one</li>
+						<li>Remember that <code>numpy</code> and <code>pandas</code> calls can be 100s times faster than hand written Python.</li>
+					</ul>
+					<section>
+					</section>
+				</section> 
+				<section>
+					<h4> A note on permitted packages</h4>
+					<ul>
+						<li>See <code>requirements.txt</code> for preapproved list. Other packages used in 
+							lectures in ACSE 1, 2, 3 may be allowed, but please ask first
+				
+						<li>If in doubt, please ask!</li> 
+					</ul>
+				</section>
+				<section>
+					<section>
+						<h4>A few notes on postcodes</h4>
+						<ul>
+							<li>UK name for postal code, like US ZIP code, Chinese 邮政编码 etc.</li>
+							<li>Divides into outward and inward sections</li>
+							<li>Outward has area (eg. SW) & district (eg. 7)</li>
+							<li>Inward has sector (eg. 2) & unit (eg. AZ)</li>
+							<li>Outward 3 or 4 characters, inward 3</li>
+							<li>Preferred human readable format: SW7 2AZ</li>
+						</ul>
+					</section>
+					<section>
+						<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/British_postcode_areas_map.svg/300px-British_postcode_areas_map.svg.png">
+						<p><span style="font-size:10pt;">Attribution: Contains Ordnance Survey and Royal Mail data © Crown copyright and database right (2019)</span></p>
+					</section>
+					<section>
+						Many different formats in use on computer
+						<ul>
+							<li><pre>"SW19 5AE"</pre><pre>"SW7 2AZ"</pre></li>
+							<li><pre>"SW195AE"</pre><pre>"SW7 2AZ"</pre>(in use here)</li>
+							<li><pre>"SW19 5AE"</pre><pre>"SW7  2AZ"</pre></li>
+						</ul>
+
+					</section>
+				</section>
+				<section>
+					<section>
+					</section>
+				</section>
+				<section>
+					<h4>Testing</h4>
+					<ul>
+						<li>Stub has limited <code>pytest</code> tests for existing code</li>
+						<li>Tests are partly set up to check formatting will be scorable.</li>
+						<li>GitHub Actions is set up to run on all code pushed (using Python 3.8 on linux)</li>
+						<li>Strongly recommended to carry on adding tests as you go. Quicker to stick to linux</li>
+					</ul>
+				</section>
+				<section>
+					<section>
+						<h4> Collaborative Workflows with <code>git</code></h4>
+						<ul>
+							<li>Want to:<ul>
+								<li> maximize productivity</li>
+								<li>minimize errors</li>
+								<li>minimize difficulty</li></ul></li>
+							<li><a href="https://www.atlassian.com/git/tutorials/comparing-workflows">Atlassian tutorial</a></li>
+							<li>Final choice is yours, but here's some advice</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Option 1: Free for all</h4>
+						<img width=300px src="https://wac-cdn.atlassian.com/dam/jcr:adf8c8e3-4287-4ec1-acf7-2a052d61d03f/13.svg?cdnVersion=638">
+						<ul>
+							<li>All work in <code>master</code></li>
+							<li>Compete to push first</li>
+							<li>Hope nothing breaks!</li>
+							<li>Not recommended for teams above 2 or 3</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Option 2: One branch each</h4>
+						<img width=400px src=https://www.atlassian.com/dam/jcr:09308632-38a3-4637-bba2-af2110629d56/07.svg>
+						<br>
+						<ul>
+							<li>Each work in a single branch</li>
+							<li>Pull from <code>master</code> often</li>
+							<li>Fewer conflicts, not much git</li>
+							<li>Sometimes hard to collaborate</li>
+							<li>Can use pull requests</li>
+						</ul>
+					</section>
+					<section>
+							<h4>Option 3: Full GitHub workflow</h4>
+							<img width=400px src=https://www.atlassian.com/dam/jcr:09308632-38a3-4637-bba2-af2110629d56/07.svg>
+							<br>
+							<ul>
+								<li>Branch for each feature</li>
+								<li>Pull from <code>master</code> often</li>
+								<li>Work together on features</li>
+								<li>Must use pull requests</li>
+								<li>More branch switching, more <code>git</code></li>
+							</ul>
+					</section>
+				</section>
+				<section><h3> Planning </h3>
+					<ul>
+						<li>Final division is up to to you</li>
+						<li>Can be democratic, or use a (sub)manager</li>
+						<li>Important to keep talking</li>
+						<li>Keep an eye on the critical path</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Questions?</h2>
+				</section>
+			</div>
+		</div>
+
+		<script src="../reveal.js/lib/js/head.min.js"></script>
+		<script src="../reveal.js//js/reveal.js"></script>
+		<script>
+		 Reveal.initialize({
+		 controls: true,
+		 progress: true,
+		 history: true,
+		 center: true,
+		 progress: true,
+		 transition: 'slide',
+		 slideNumber: 'c/t',
+   
+		 
+		 // Optional libraries used to extend on reveal.js
+		   dependencies: [
+			 { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+			 { src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			 { src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			 { src: '../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+			 { src: '../reveal.js/plugin/math/math.js' },
+		   ]
+		 });
+		</script>
+
+
+	</body>
+</html>
