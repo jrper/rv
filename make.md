@@ -1,3 +1,21 @@
+# Make and friends
+
+acse2020.github.io/acse-6-make/slides/make.html
+
+j.percival@imperial.ac.uk
+
+
+
+### The three stages of generating a unix executable from source
+
+![../images/workflow.png](../images/workflow.png)
+
+ - Configure - find libraries and tools
+ - Build - Compile code and link executable
+ - Run 
+
+
+
 ### Configuring - `autotools` & `cmake`
 
 Linux packages often use tools called `cmake` [(www.cmake.org)](www.cmake.org) or `autotools` [(autotools.io)](autotools.io) to deal with finding libraries and file paths.
