@@ -1,6 +1,6 @@
 # Make and friends
 
-acse2020.github.io/acse-6-make/slides/make.html
+jrper.github.io/rv/make.html
 
 j.percival@imperial.ac.uk
 
@@ -8,7 +8,7 @@ j.percival@imperial.ac.uk
 
 ### The three stages of generating a unix executable from source
 
-![../images/workflow.png](../images/workflow.png)
+![./make_images/workflow.png](./make_images/workflow.png)
 
  - Configure - find libraries and tools
  - Build - Compile code and link executable
@@ -68,6 +68,9 @@ On unix-like systems:
 
 - default C compiler is `cc`, C++ compiler is `c++`
 - linker is `ld` (can just call compiler)
+- On linux `cc` is usual `gcc`, the gnu compiler
+- On Mac `cc` is clang (due to licensing)
+
 
 On Windows:
 - Compiler is `cl.exe` for both,
@@ -77,6 +80,18 @@ On Windows:
 
 See the [Microsoft documentation](https://docs.microsoft.com/en-us/cpp/build/building-on-the-command-line?view=vs-2019) for more.
 
+
+### MPI Wrappers
+
+On unix like systems:
+
+- executable scripts like `mpicc` & `mpic++` wrap compiler to add in libraries/include path
+- use `mpicc --show` to see what it's doing.
+
+```bash
+$> mpicc --show
+gcc -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -I/usr/lib/x86_64-linux-gnu/openmpi/include -pthread -L/usr/lib/x86_64-linux-gnu/openmpi/lib -lmpi
+```
 
 
 ### Compiling & Linking
@@ -103,7 +118,7 @@ Here we're using various compiler options:
 
 ### Compiling & Linking
 
-![../images/Dependencies.png](../images/Dependencies.png)
+![./make_images/Dependencies.png](./make_images/Dependencies.png)
 
 Code units must also be rebuilt _in order_ as their dependencies are updated.
 
@@ -132,7 +147,7 @@ use `chmod u+x compile.sh` one time, then
 
 
 
-### GNU make
+### GNU make (and BSD make)
 #### A program to build programs
 
 The GNU tool `make` uses recipes from text files, called `Makefile`s to automate and control the build process.
