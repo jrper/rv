@@ -1,21 +1,3 @@
-# Make and friends
-
-jrper.github.io/rv/make.html
-
-j.percival@imperial.ac.uk
-
-
-
-### The three stages of generating a unix executable from source
-
-![make_images/workflow.png](make_images/workflow.png)
-
- - Configure - find libraries and tools
- - Build - Compile code and link executable
- - Run 
-
-
-
 ### Configuring - `autotools` & `cmake`
 
 Linux packages often use tools called `cmake` [(www.cmake.org)](www.cmake.org) or `autotools` [(autotools.io)](autotools.io) to deal with finding libraries and file paths.
@@ -41,7 +23,7 @@ for `cmake` ones.
 
 ### Compiling & Linking
 
-For today we'll concentrate on the build step.
+For now we'll concentrate on the build step.
 
 We can "just" call the compiler by hand
 
@@ -73,6 +55,7 @@ On Windows:
 - Compiler is `cl.exe` for both,
 - Linker is `link.exe`.
 - Configure `.vcxproj` files with `msbuild.exe` or `devenv.exe`.
+- Want these things in the PATH.
 
 See the [Microsoft documentation](https://docs.microsoft.com/en-us/cpp/build/building-on-the-command-line?view=vs-2019) for more.
 
@@ -84,7 +67,7 @@ Operations get very complicated as you include more compiler options, link to mo
 ```
 cxx -DUSE_VTK=1 -I/usr/local/include -I/apps/vtk myfile.cpp \
  myotherfile.cpp another_file.o yetanotherfile.o \
- -O3 -g -ffast-math -lX -lm -L/usr/lib/vtk-5.10 \
+ -O3 -g -ffast-math -lX -lm -L/usr/lib/vtk-6.3 \
  -lvtkCommonCore -lpng -o myfile
 ```
 
@@ -93,7 +76,7 @@ cxx -DUSE_VTK=1 -I/usr/local/include -I/apps/vtk myfile.cpp \
 
 Here we're using various compiler options:
 - The `-D` sets macros for `#ifdef` etc
-- The `-I` adds to the header search path,
+- The `-I` adds to the header search path
 - The `-L` adds to the library search path
 - The `-O3` specifies maximum compiler optimizations
 - The `-g` leaves names for debugging
@@ -102,7 +85,7 @@ Here we're using various compiler options:
 
 ### Compiling & Linking
 
-![make_images/Dependencies.png](make_images/Dependencies.png)
+![../images/Dependencies.png](../images/Dependencies.png)
 
 Code units must also be rebuilt _in order_ as their dependencies are updated.
 
@@ -310,9 +293,9 @@ Tells `make` that install doesn't really produce output, & should always run.
 
 ### Running multiple recipes at once
 
-`make` has an option `-j` to run multiple recipes at the same time.
+`make` has an option `-j` to try to run multiple recipes at the same time.
 
-Eg. to allow up to 4 jobs at once
+Eg. to allow up to 4 jobs at once (one is a manger)
 ```
 make -j4 all
 ```
@@ -320,12 +303,13 @@ Since targets must wait for their dependencies to be built, this may not speed t
 
 
 
-### Using make on the ICL HPC clusters
+### Using make on an HPC clusters
 
-- On CX1/CX2, load module files _before_ calling `make`.
-- Can call `make` inside a `.pbs` script, but don't generally want to run using `mpiexec`.
-- Often want a short serial queue.
-- If using the `$TMPDIR` variable, remember to copy back/install your output.
+- On systems supporting environment modules, want to load module files _before_ calling `make`.
+- Can call `make` inside a job script, but don't generally want to run using `mpiexec`.
+- For small job, might choose to run on the login node.
+- Often want to send to a short serial queue.
+- If working on a local disk, remember to copy back/install your output (not an issue on DUG).
 
 
 ```
@@ -349,10 +333,14 @@ make
 
 ### Further reading
 
-- A longer tutorial:
+- A longer make tutorial:
 
 [swcarpentry.github.io/make-novice](https://swcarpentry.github.io/make-novice/)
 
-- (too much) documentation:
+- (far too much) make documentation:
 
 [www.gnu.org/software/make/manual](https://www.gnu.org/software/make/manual)
+
+- Information on the gcc optimization flags 
+
+[https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html](https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html)
