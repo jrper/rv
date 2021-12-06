@@ -29,8 +29,7 @@
 					<h3>Testing & Collaboration</h3>
 					<h4>Additional Technical details</h4>
 					<h5> James Percival </h5>
-					<h5> <span style="color:blue;"><code>https://jrper.github.com/rv/miniproject_testing
-                        .html</code></span></h5>
+					<h5> <span style="color:blue;"><code>https://jrper.github.com/rv/miniproject_testing.html</code></span></h5>
 				</section>
 				<section>
 					<h4>Testing</h4>
@@ -68,8 +67,8 @@
 					</section><section>
 					<ul>
 					<li>Add some files:
-					<pre><code>git add myfile.txt
-					git commit -m "A commit message."</code></pre>
+					<pre><code>git add myfile.txt</code></pre>
+					<pre><code>git commit -m "A commit message."</code></pre>
 					</li>
 					</ul>
                     </section><section>
@@ -88,7 +87,7 @@
 					<h2>git through VS Code</h2>
 					<p>Over to a VS Code window...</p>
 					</section></section><section><section>
-					<h2>Avoiding conflicts (seen and unseen):</h2><ul>
+					<h3>Avoiding conflict (seen &amp; unseen):</h3><ul>
 					<li>Agree naming patterns &amp; interfaces early on.</li>
 					<li>Don't work in one monolithic file (but do have a strategy on how things are split up).</li>
 					<li>Have tests set up at the boundary between working parties.</li>
@@ -98,7 +97,7 @@
 					<li>Have well defined branches (but don't let them hang around unmerged).</li>
 					</ul>
 					</section></section><section><section>
-					<p><em>intermediate tasks (don't start here)</em>:</p>
+					<h3>intermediate tasks (don't start here)</h3>
 					<ul>
 					<li>Creating new branchs (use <code>git checkout -b &lt;name&gt;</code> on the command line)</li>
 					<li>Merge the branch into the original one (using <code>git checkout</code> and <code>git merge</code>)</li>
@@ -106,96 +105,59 @@
 					<li>Fixing a conflict.</li>
 					</ul>
 					</section><section>
-					<p><em>Advanced tasks (things to do one day)</em>:</p>
+					<h3>Advanced tasks (things to do one day)</h3>
 					<ul>
 					<li>revert a change (don't do in public!)</li>
 					<li>cherrypicking a change from another branch</li>
-					<li>use an interactive rebase (e.g.  <code>git rebase -i HEAD~2</code>)</li>
+					<li>use an interactive rebase <br> (e.g.  <pre><code>git rebase -i HEAD~2</code></pre>)</li>
 					</ul>
 					</section></section><section><section>
-					<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-					</div><div class="inner_cell">
-					<div class="text_cell_render border-box-sizing rendered_html">
-					<h2 id="Project-Management--Waterfall-&amp;-Agile">Project Management -Waterfall &amp; Agile<a class="anchor-link" href="#Project-Management--Waterfall-&amp;-Agile">&#182;</a></h2><p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Waterfall_model.svg/1280px-Waterfall_model.svg.png" alt="drawing"></p>
+					<h2>Project Management -Waterfall &amp; Agile</h2>
 					
-					</div>
-					</div>
-					</div></section><section>
-					<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-					</div><div class="inner_cell">
-					<div class="text_cell_render border-box-sizing rendered_html">
+			        <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Waterfall_model.svg/1280px-Waterfall_model.svg.png" alt="drawing"></p>
+                    </section><section>
 					<ul>
 					<li>Waterfall: Top down management.</li>
 					<li>Each stage finishes before next one starts.</li>
 					<li>Pure form probably doesn't exist.</li>
 					<li>Theoretically ideal for small projects, large teams &amp; fixed deadlines.</li>
 					</ul>
-					
-					</div>
-					</div>
-					</div></section><section>
-					<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-					</div><div class="inner_cell">
-					<div class="text_cell_render border-box-sizing rendered_html">
+                    </section><section>
 					<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Extreme_Programming.svg/1024px-Extreme_Programming.svg.png" alt="drawing"></p>
-					
-					</div>
-					</div>
-					</div></section></section><section><section>
-					<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-					</div><div class="inner_cell">
-					<div class="text_cell_render border-box-sizing rendered_html">
+                    </section><section>
 					<ul>
 					<li>Agile: bottom-up process with iteration</li>
 					<li>Lots of sprints.</li>
 					<li>Lots of flavours: Kanban, Scrum, Extreme programming</li>
 					<li>At its worst, justifies inefficient management &amp; chaotic development</li>
 					</ul>
-					
-					</div>
-					</div>
-					</div></section></section><section><section>
-					<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-					</div><div class="inner_cell">
-					<div class="text_cell_render border-box-sizing rendered_html">
-					<h2 id="GitHub:-adding-a-&quot;one-true-repo&quot;-back-to-git">GitHub: adding a "one true repo" back to git<a class="anchor-link" href="#GitHub:-adding-a-&quot;one-true-repo&quot;-back-to-git">&#182;</a></h2><p>At this point the core site needs no introduction, but time to move beyond "place to hold code for people to grab.</p>
-					
-					</div>
-					</div>
-					</div></section></section><section><section>
-					<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-					</div><div class="inner_cell">
-					<div class="text_cell_render border-box-sizing rendered_html">
-					<h2 id="GitHub-Flow">GitHub Flow<a class="anchor-link" href="#GitHub-Flow">&#182;</a></h2><p>One of many strategies to use git in medium sized groups to code collaboratively:</p>
+                    </section></section><section><section>
+					<h2>GitHub: adding a "one true repo" back to git</h2>
+					<p>At this point the core site needs no introduction, but time to move beyond "place to hold code for people to grab.</p>
+					</section></section><section><section>
+					<h2>GitHub Flow</h2><p>One of many strategies to use git in medium sized groups to code collaboratively:</p>
 					<ul>
 					<li>keep one branch (GitHub calls it <code>main</code>) as "known good"/production/safe to merge from.</li>
 					<li>Work in "feature" branches. </li>
 					<li>Use pull requests (PRs) for merges to <code>main</code>. (make sure tests run here.)</li>
 					</ul>
+					</section></section><section><section>
+					<h2>Pull requests and Code review</h2>
 					
-					</div>
-					</div>
-					</div></section></section><section><section>
-					<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-					</div><div class="inner_cell">
-					<div class="text_cell_render border-box-sizing rendered_html">
-					<h2 id="Pull-requests-and-Code-review">Pull requests and Code review<a class="anchor-link" href="#Pull-requests-and-Code-review">&#182;</a></h2><p>Questions to ask:</p>
+					<p>Questions to ask:</p>
 					<ul>
 					<li>What does PR claim to do? Does it?</li>
 					<li>Is new code in the right place?</li>
 					<li>Tests, examples and documentation.</li>
 					<li>Does it meet the project's coding standards?</li>
 					</ul>
-					
-					</div>
-					</div>
-					</div></section><section>
-					<p>Google's advice:</p>
+					</section><section>
+					<h3>Google's advice:</h3>
 					<ul>
 					<li>In general, reviewers should favour approving a PR once it is in a state where it definitely improves the overall code health of the system being worked on, even if the PR isn’t perfect.</li>
 					</ul>
                     </section><section>
-					<p>Google's advice:</p>
+					<h3>Google's advice:</h3>
 					<ul>
 					<li><p>If you are not in the middle of a focused task, you should do a code review shortly after it comes in...</p>
 					</li>
