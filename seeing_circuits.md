@@ -40,51 +40,43 @@ Possible free programs for individual diagrams:
 
 ### Circuit visualization
 
-Template project repository contains programmatic circuit plotter using graphviz in `tools` directory
-
- - python version `plot.py`
- - C/C++ code in `plot.cpp` + Makefile
-
-
-### Plot.py
+Graphviz is low effort to install (for Python_):
 
 ```
 conda install graphviz python-graphviz
 ```
 
-```
-python plot.py example 0 1 2
-```
+###
 
-
-### Plot.py
-
-![](seeing_circuits_images/circuit3.png)
-
-
-### Plot.py
+Graphviz Python wrapper builds graph by describing edges
 
 ```
-python plot.py example 0 2 2
+import graphviz
+graph = graphviz.Digraph()
+graph.attr(rankdir='LR')
+graph.attr('node', shape='rectangle')
+graph.edge('Feed', 'Unit 1', color='black',
+            headport='w', tailport='e',
+           arrowhead='normal')
+graph.edge('Unit 1', 'Unit 2', color='blue',
+            headport='w', tailport='n',
+           arrowhead='normal')
+graph.edge('Unit 1', 'Unit 2', color='red',
+            headport='w', tailport='s',
+           arrowhead='normal')
+graph.render('example', cleanup=True, format='png')
 ```
 
-![](seeing_circuits_images/circuit4.png)
 
-
-### Plot.py
-
-```
-python plot.py example 0 1 2 3 4 4 5 6 7 7 8 8 9 \
-     10 11 10 11 10 11 10 11
-```
-
-![](seeing_circuits_images/circuit5.png)
+![](seeing_circuits_images/example.png)
 
 
 
-### plot.cpp
+### Circuit visualization
 
-Requires graphviz development build (library + header files).
+
+
+Using C++ directly requires graphviz development build (library + header files).
 
 Easy on CX1
 
