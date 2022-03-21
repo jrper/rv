@@ -40,13 +40,21 @@ Possible free programs for individual diagrams:
 
 ### Circuit visualization
 
-Graphviz is low effort to install (for Python_):
+Graphviz is low effort to install (for _Python_):
 
 ```
 conda install graphviz python-graphviz
 ```
 
-###
+**or** (Mac only via homebrew)
+
+```
+brew install graphviz
+pip install graphviz
+```
+
+
+### Graphviz
 
 Graphviz Python wrapper builds graph by describing edges
 
@@ -68,15 +76,17 @@ graph.render('example', cleanup=True, format='png')
 ```
 
 
-![](seeing_circuits_images/example.png)
-
-
-
 ### Circuit visualization
 
+![](seeing_circuits_images/example.png)
+
+See wrapper [documentation](https://pygraphviz.github.io/documentation/stable/tutorial.html#start-up) for more.
 
 
-Using C++ directly requires graphviz development build (library + header files).
+
+### If you somehow get bored.
+
+Using Graphviz in C++ directly requires development build (library + header files).
 
 Easy on CX1
 
@@ -96,3 +106,11 @@ git clone --recurse-submodules \
  2. Add `graphviz\windows\dependencies\graphviz-build-utilities\` to your path
 
  3. Open `graphviz.sln` in Visual Studio and build X86/Win32 version.
+
+
+ 
+ ### Good Visualisations
+
+ - Generate lear layout of circuit.
+ - Includes information on optimality.
+ - Ideally indicate circuit flow data.

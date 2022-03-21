@@ -1,25 +1,26 @@
-# Cross platform colaboration
+# Cross platform collaboration
 
-[jrper.github.io/rv/cross_colab.html](http://jrper.github.io/rv/cross_colab.html)
+[jrper.github.io/rv/cross_collab.html](http://jrper.github.io/rv/cross_collab.html)
 
 j.percival@imperial.ac.uk
 
 
-## Cross Platform colaboration
 
-- Cross platform colaboration is surprising annoying.
+## Cross Platform collaboration
+
+- Cross platform collaboration is surprising annoying.
 - You may already have a little experience from Advanced Programming/Parallel Programming.
 - Remember that everyone is still learning.
 
 
 ## Tips & Guidelines
 
-Colaboration strategies:
+Collaboration strategies:
 
 - Option 1: deally want everyone using the same code base natively:
   - Plan structure before coding.
-  - (eg.) CMake build system.
-  - Tests & examples.
+  - (eg.) CMake build system (or equivalent).
+  - use Tests & examples.
   - Single C++ standard.
 
 
@@ -27,18 +28,22 @@ Colaboration strategies:
   - e.g. VS code solution + Makefile
   - Less effort to start, more effort to integrate.
   - On this route, want work teams on similar machines.
+  - Testing even more important.
 
 
 - Option 3: emulation:
   - WSL lets Windows users pretend they're on *nix
   - Virtualization (e.g. UTM/parallels) can let Macs run Windows (painfully at the moment.)
+  - Big learning curve for the side that switches.
 
 
 General tips:
 - Remember to add more tests/examples as you go
 - Keep it simple.
-- If in doubt, stick to standard C++.
+- If in doubt, stick to standard C++ (highest which works for everyone).
 - User interface is often biggest point of conflict.
+- Keep work visible (i.e. on GitHub, not laptop).
+- Merge regularly.
 
 
 
@@ -62,3 +67,7 @@ General tips:
     ```
 
 
+
+## Take home messges:
+
+- Keep communicating, be kind.
